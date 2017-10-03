@@ -129,7 +129,7 @@ def alpha(train_set, train_energies, val_set, val_energies):
 def optimal_solver(train_set, train_energies, val_set, val_energies):
 
     neurons = (2,8,20)
-    iterations = 50
+    iterations = 30
     
     solvers = ['lbfgs', 'sgd', 'adam']
     train_mse_result = {}
@@ -231,8 +231,8 @@ if __name__ == '__main__':
     train_set, val_set, train_energy, val_energy = train_test_split(train_set, 
                                         energies, test_size=0.25, random_state=0) 
     
-    #neurons(train_set, train_energy, val_set, val_energy)
-    #alpha(train_set, train_energy, val_set, val_energy)
+    neurons(train_set, train_energy, val_set, val_energy)
+    alpha(train_set, train_energy, val_set, val_energy)
     optimal_solver(train_set, train_energy, val_set, val_energy)
     optimal_seed(train_set, train_energy, val_set, val_energy)
     

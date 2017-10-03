@@ -35,8 +35,6 @@ def load_data(path, separeted=False):
 
     return entries, energies
 
-def preprocess_data(train_entries, test_entries, energies):
-    pass
 
 def create_data_set(reduced_entries, no_atoms=60):
     

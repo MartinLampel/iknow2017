@@ -43,35 +43,10 @@ if __name__ == '__main__':
         fig = plt.figure()
         ax = fig.gca(projection='3d')
         ax.scatter(entries[i,  :, 0], entries[i,  :, 1], entries[i,  :, 2])
-        c = entries[i].mean(axis=0)
-        ax.scatter(c[0], c[1], c[2])
-       
-        s = entries[i].sum(axis=0)
-        ax.scatter(s[0], s[1], s[2])
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_zlabel('Z')
         plt.show()
         
     
-    pca = PCA(n_components=2)
-    
-    entries, energies = load_data('new_training_set.xml')
-    reduced_entries = pca.fit_transform(entries)
-    
-    kmeans = KMeans(n_clusters=60)
-    labels = kmeans.fit_predict(reduced_entries)
-    
-    plt.figure(1)
-    plt.clf()
-    
-    color = 'bgrcmyk'
-    for i in range(60):
-        plt.scatter(reduced_entries[labels == i, 0], reduced_entries[labels == i, 1], 
-                    color=color[i%7])
-    
-    centroids = kmeans.cluster_centers_
-    plt.scatter(centroids[:, 0], centroids[:, 1],
-                marker='x', s=169, linewidths=3,
-                color='w', zorder=10)
-    plt.title('K-means clustering on the digits dataset (PCA-reduced data)\n'
-              'Centroids are marked with white cross')
-    
-    plt.show()
+ 
